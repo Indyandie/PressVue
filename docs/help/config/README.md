@@ -1,19 +1,23 @@
 # Config Settings
-
+Add site wide settings from `.vuepress/config.js`
 ``` js
 module.exports = {
-  /* Settings */
+  // Settings
 }
 ```
 
-## Service Worker
+## Site Info
 ``` js
-serviceWorker: true
+title: "Kooll Pname", // Site Header
+description: "Etc. etc. etc.",
 ```
 
-## Theme
+## HTML \<head>
 ``` js
-theme: 'vue'
+head: [
+  //Favicon
+  ['link', { rel: 'icon', href: `/logo.png` }] // .vuepress/public/logo.png
+],
 ```
 
 ## Search Bar
@@ -22,23 +26,30 @@ search: false,
 searchMaxSuggestions: 10
 ```
 
-## Translations
-``` js
-locales: {
-  '/': {lang: 'en-US' },
-  '/zh/': {lang: 'en-JP' }
-}
-```
-
 ## Theme Configuration
 
 ``` js
 themeConfig: {
-  /* Nav, Sidebar*/
+  // Nav, Sidebar, Locales (for country specific themeconfig)
 }
 ```
 
 ## Navigation
+
+``` md
+<!-- This Site -->
+cwd
+└─ docs
+│   │─ README.md
+│   │─ test.md
+│   └─ help
+│      └─ config
+│      │  └─ README.md
+│      │─ markdown
+│      │  └─ README.md
+│      │─ vue
+│      │  └─ README.md
+```
 
 ### Simple
 
@@ -192,4 +203,22 @@ algolia: {
   apiKey: <APIKEY>,
   indexName: '<NAME>'
 },
+```
+
+## Service Worker
+``` js
+serviceWorker: true
+```
+
+## Theme
+``` js
+theme: 'vue'
+```
+
+## Translations
+``` js
+locales: {
+  '/': {lang: 'en-US' },
+  '/zh/': {lang: 'en-JP' }
+}
 ```

@@ -121,9 +121,6 @@ export default {
 }
 ```
 
-## Line Numbers
-
-
 ## File path
 
 ``` md
@@ -131,3 +128,57 @@ export default {
 ```
 ⬇️
 <<< @/README.md
+
+# Markdown Config
+
+```
+markdown: {
+  // settings go here
+}
+```
+
+## TOC
+``` js
+// options for markdown-it-toc
+toc: { includeLevel: [1, 2, 3, 4] }
+```
+
+## lineNumbers
+
+``` js
+// Line Numbers
+lineNumbers: true,
+```
+
+## Anchors
+
+``` js
+// options for markdown-it-anchor
+anchor: {
+  permalink: true, // Whether to add permalinks next to titles.
+  permalinkBefore: true,
+  permalinkSymbol: '#'
+}
+```
+
+## markdown-it
+
+
+``` js
+config: md => {
+  md.set({
+    breaks: true,               // Convert '\n' in paragraphs into <br>
+    html:         false,        // Enable HTML tags in source
+    xhtmlOut:     false,        // Use '/' to close single tags (<br />).
+                                // This is only for full CommonMark compatibility.
+    breaks:       false,        // Convert '\n' in paragraphs into <br>
+    langPrefix:   'language-',  // CSS language prefix for fenced blocks. Can be
+                                // useful for external highlighters.
+    linkify:      false,        // Autoconvert URL-like text to links
+  }),
+  md.use(require('markdown-it-highlightjs')),
+  md.use(require('markdown-it-prism'), { 'plugins': ['copy-to-clipboard'] })
+}
+```
+
+[markdown-it plugins](https://www.npmjs.com/search?q=keywords:markdown-it-plugin)

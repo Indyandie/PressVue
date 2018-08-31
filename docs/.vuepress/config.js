@@ -2,11 +2,12 @@
 
 module.exports = {
 
-  title: "📗 PressVue",
+  title: "PressVue",
+  description: "A simple vuepress template.",
 
-  // Added to the HTML <head>
+  // HTML <head>
   head: [
-    ['link', { rel: 'shortcut icon', href: `/favicon.ico` }]
+    ['link', { rel: 'icon', href: `/logo.png` }] // .vuepress/public/logo.png
   ],
 
   // THEME CONFIGURATION
@@ -50,52 +51,19 @@ module.exports = {
       }
   ],
 
-  // Sidebar
+  // SIDEBAR
     sidebar: [
 
-      '/',
-      ['/test', 'custom text'],
-      ['/custompg', 'Dark Mode'],
+      '/start',
+      '/help/config/',
+      '/help/markdown/',
       '/help/vue/',
-      '/help/markdown/'
+      ['/test', 'Custom sidebar title'],
+      ['/custompg', 'Page Specific Layout'],
 
     ],
 
   },// END << THEMECONFIG
-
-
-// Markdown Setting
-  markdown: {
-
-    // Line Numbers
-    lineNumbers: true,
-
-    // options for markdown-it-toc
-    toc: { includeLevel: [1, 2, 3, 4] }
-
-    // options for markdown-it-anchor
-    /*
-    anchor: { permalink: false },
-    */
-
-    // MARKDOWN
-    /*
-    config: md => {
-      md.set({
-        breaks: true,
-        html:         false,        // Enable HTML tags in source
-        xhtmlOut:     false,        // Use '/' to close single tags (<br />).
-                                    // This is only for full CommonMark compatibility.
-        breaks:       false,        // Convert '\n' in paragraphs into <br>
-        langPrefix:   'language-',  // CSS language prefix for fenced blocks. Can be
-                                    // useful for external highlighters.
-        linkify:      false,        // Convert URLs into links
-      })
-      md.use(require('markdown-it-xxx'))
-    }
-    */
-
-  } // END << MARKDOWN
 
 
 } // END << module.exports

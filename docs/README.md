@@ -1,8 +1,17 @@
 ---
-sidebar: true
+home: true
+heroImage: /hero.png
+actionText: Get Started →
+actionLink: /start
+features:
+- title: 🍜 Less Setup
+  details: Basic configuration to get started right away.
+- title: 🍼 Cheat Sheet
+  details: If you're a noob like me. You should still read the official documentation.
+- title: 🤓 Nothing Special
+  details: This was just a good way for me to familiarize myself with Vuepress.
 ---
 
-
-# Hola mundo!
-
-This is the starting point of your Vuepress site aka 🏠📄.
+``` bash
+echo '# Thank you Evan You!' > appreciation.md
+```
