@@ -6,23 +6,23 @@ module.exports = {
 }
 ```
 
-### Service Worker
+## Service Worker
 ``` js
 serviceWorker: true
 ```
 
-### Theme
+## Theme
 ``` js
 theme: 'vue'
 ```
 
-### Search Bar
+## Search Bar
 ``` js
 search: false,
 searchMaxSuggestions: 10
 ```
 
-### Translations
+## Translations
 ``` js
 locales: {
   '/': {lang: 'en-US' },
@@ -30,7 +30,7 @@ locales: {
 }
 ```
 
-### Theme Configuration
+## Theme Configuration
 
 ``` js
 themeConfig: {
@@ -82,7 +82,7 @@ nav: [
 ]
 ```
 
-## Sidebar
+### Sidebar
 
 ### All the links are belong to us
 Displaying Header Links of All Pages
@@ -90,7 +90,7 @@ Displaying Header Links of All Pages
 displayAllHeaders: true // Default: false
 ```
 
-### Basic
+#### Basic
 ```js
 [
   '/',
@@ -101,7 +101,7 @@ displayAllHeaders: true // Default: false
 ],
 ```
 
-### Groups
+#### Groups
 
 /
 ```js
@@ -133,7 +133,7 @@ displayAllHeaders: true // Default: false
 ]
 ```
 
-### Page Specific
+#### Page Specific
 
 ``` js
 {
@@ -158,8 +158,38 @@ displayAllHeaders: true // Default: false
 }
 ```
 
-### From an object
+#### From an object
 
 ``` js
 {'/': genSidebarConfig('Pages')}
+```
+
+##### Object
+``` js
+function genSidebarConfig (title) {
+
+  // You should put this outisde of module.exports
+  return [
+    {
+      title,
+      collapsable: true,
+      children: [
+        '',
+        '/test',
+        '/help/vue/',
+        '/help/markdown/'
+      ]
+    }
+  ]
+}
+```
+
+### Algolia Search (Super Search)
+This will crawl through your entire site. The default search only looks through headings.
+
+``` js
+algolia: {
+  apiKey: <APIKEY>,
+  indexName: '<NAME>'
+},
 ```

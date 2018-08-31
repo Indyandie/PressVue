@@ -3,27 +3,25 @@
 module.exports = {
 
   title: "📗 PressVue",
+
+  // Added to the HTML <head>
   head: [
     ['link', { rel: 'shortcut icon', href: `/favicon.ico` }]
   ],
-
-
-
 
   // THEME CONFIGURATION
   themeConfig: {
 
   // Navigation
-
     nav: [
 
-      // Simple
+    // Simple
       {
         text: 'Nav',
         link: '/test.md'
       },
 
-      // Dropdown
+    // Dropdown
       {text: 'Dropdown',
           items: [
             { text: 'Label',
@@ -45,7 +43,7 @@ module.exports = {
         ]
       },
 
-      // External Link
+    // External Link
       {
         text: 'Github',
         link: 'https://github.com/'
@@ -53,8 +51,6 @@ module.exports = {
   ],
 
   // Sidebar
-
-
     sidebar: [
 
       '/',
@@ -65,56 +61,8 @@ module.exports = {
 
     ],
 
+  },// END << THEMECONFIG
 
-
-
-
-
-
-  
-
-
-    // algolia search
-    /*
-    algolia: {
-      apiKey: <APIKEY>,
-      indexName: '<NAME>'
-    },
-    */
-
-    // Locale Specific Settings
-    /*
-    locales: {
-
-    // US
-      '/': {
-        lang: 'en-US',
-
-        // Navigation
-          nav: [
-            {
-              text: 'Nav',
-              link: '/test.md'
-            },
-          ],
-
-        // Sidebar
-        sidebar:
-        //{'/': genSidebarConfig('Pages')}
-
-      },
-
-    // Japan
-      '/zh/': {
-        lang: 'en-JP',
-      }
-
-
-  } // LOCALES END
-  */
-
-
-  },// THEMECONFIG END
 
 // Markdown Setting
   markdown: {
@@ -141,30 +89,13 @@ module.exports = {
         breaks:       false,        // Convert '\n' in paragraphs into <br>
         langPrefix:   'language-',  // CSS language prefix for fenced blocks. Can be
                                     // useful for external highlighters.
-        linkify:      false,
+        linkify:      false,        // Convert URLs into links
       })
       md.use(require('markdown-it-xxx'))
     }
     */
 
+  } // END << MARKDOWN
 
 
-  }
-
-
-}
-
-function genSidebarConfig (title) {
-  return [
-    {
-      title,
-      collapsable: true,
-      children: [
-        '',
-        '/test',
-        '/help/vue/',
-        '/help/markdown/'
-      ]
-    }
-  ]
-}
+} // END << module.exports
