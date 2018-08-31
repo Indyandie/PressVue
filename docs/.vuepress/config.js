@@ -7,36 +7,17 @@ module.exports = {
     ['link', { rel: 'shortcut icon', href: `/favicon.ico` }]
   ],
 
-  // Service Worker
-  /*
-  serviceWorker: true,
-  */
-
-  // # SET THEME
-  /*
-  theme: 'vue',
-  */
-
-  // Search Bar
-  /*
-  search: false,
-  searchMaxSuggestions: 10
-  */
 
 
-  // Translations
-  locales: {
-    '/': {lang: 'en-US' },
-    '/zh/': {lang: 'en-JP' }
-  },
 
   // THEME CONFIGURATION
   themeConfig: {
 
   // Navigation
 
-    // SImple
     nav: [
+
+      // Simple
       {
         text: 'Nav',
         link: '/test.md'
@@ -45,7 +26,7 @@ module.exports = {
       // Dropdown
       {text: 'Dropdown',
           items: [
-            { text: '',
+            { text: 'Label',
               items: [
                 { text: 'One', link: '/test.md' },
                 { text: 'Two', link: '/test.md' }
@@ -73,80 +54,24 @@ module.exports = {
 
   // Sidebar
 
-  // Displaying Header Links of All Pages
-  /*
-  splayAllHeaders: true // Default: false
-  */
 
+    sidebar: [
 
-    sidebar:
-
-    // SIdebar — Basic
-    [
       '/',
-      ['/test', 'Explicit link text'],
+      ['/test', 'custom text'],
       ['/custompg', 'Dark Mode'],
       '/help/vue/',
       '/help/markdown/'
+
     ],
 
 
-    // SIdebar — Groups
-    /*
-    [
-      {
-        title: 'Main',
-        collapsable: false,
-        children: [
-          '/'
-        ]
-      },
-      {
-        title: 'Help',
-        children: [
-            '/help/vue/',
-            '/help/markdown/'
-         ]
-      },
-      {
-        title: 'All',
-        children: [
-            '/',
-            '/test',
-            '/help/vue/',
-            '/help/markdown/'
-         ]
-      }
-    ]
-    */
 
 
-    // SIdebar — Page Specific
-    /*{
 
-      '/help/': [
-        {
-        // Collapsable
-          title: 'Help',
-          collapsable: true,
-          children: [
-            '/help/vue/',
-            '/help/markdown/'
-            ]
-        }
-      ],
 
-      '/': [
-        '/',
-        '/test',
-      ]
 
-    } */
-
-    // SIdebar — From An Object
-    /*
-    {'/': genSidebarConfig('Pages')}
-    */
+  
 
 
     // algolia search
