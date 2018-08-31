@@ -205,12 +205,24 @@ module.exports = {
     anchor: { permalink: false },
     */
 
+    // MARKDOWN
     /*
     config: md => {
-      // use more markdown-it plugins!
+      md.set({
+        breaks: true,
+        html:         false,        // Enable HTML tags in source
+        xhtmlOut:     false,        // Use '/' to close single tags (<br />).
+                                    // This is only for full CommonMark compatibility.
+        breaks:       false,        // Convert '\n' in paragraphs into <br>
+        langPrefix:   'language-',  // CSS language prefix for fenced blocks. Can be
+                                    // useful for external highlighters.
+        linkify:      false,
+      })
       md.use(require('markdown-it-xxx'))
-    },
+    }
     */
+
+
 
   }
 
