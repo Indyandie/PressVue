@@ -10,7 +10,4 @@ Working on it :hammer:
 3. get this repo `git clone https://github.com/Indyandie/PressVue.git`
 2. `cd` to docs directory
 3. run `vuepress dev`
-<<<<<<< HEAD
 4. more to come…
-=======
->>>>>>> 8a8f93d16dbf805c71851bebcfe379d468d97d0e
