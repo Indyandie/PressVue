@@ -1,17 +1,47 @@
 # Using Markdown
 
+This is a super trimmed down ✂️copy/🍝pasta version of [vuepress - markdown extensions](https://vuepress.vuejs.org/guide/markdown.html#header-anchors).
+
 ## Elementary
 ``` md
 ## Heading 2
-### Heaeding 3
-#### Heading 4
+Paragraphs **bold** _italic_
+### Unordered List
+* house
+  * Cat
+  * Dog
+* Monkey
+* Fox
+#### Ordered List
+1. Last
+    1. least
+1. First
+    1. Most
+
+horizontal rule
+---
 ##### Heading 5
+> Blockquotes
 ```
 ⬇️
 ## Heading 2
-### Heaeding 3
-#### Heading 4
+Paragraphs **bold** _italic_
+### Unordered List
+* house
+  * Cat
+  * Dog
+* Monkey
+* Fox
+#### Ordered List
+1. Last
+    1. least
+1. First
+    1. Most
+
+horizontal rule
+---
 ##### Heading 5
+> Blockquotes
 
 
 ## Internal Links
@@ -34,23 +64,40 @@ Outbound links automatically gets `target="_blank" rel="noopener noreferrer"`:
 * [bing](https://www.bing.com)
 * [This repo](https://github.com/vuejs/vuepress)
 
+### Images
+```md
+#### Internal Image
+![alt text]( /hero.png "Hero Image")
+
+#### External Image
+![alt text]( https://78.media.tumblr.com/8930b9b020b7588bb9f5c3ebaa32b315/tumblr_okmuuwcvMt1qdku5lo1_500.gif "Soot")
+```
+⬇️ <br/>
+#### Internal Image
+![alt text]( /hero.png "Hero Image")
+
+#### External Image
+![alt text]( https://78.media.tumblr.com/8930b9b020b7588bb9f5c3ebaa32b315/tumblr_okmuuwcvMt1qdku5lo1_500.gif "Soot")
+
+
 ## GitHub-Style Tables
 
 ``` md
-| Tables        |      Are      |  Cool |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      |   centered    |   $12 |
-| zebra stripes |   are neat    |    $1 |
-| cat           |      fox      |  $100 |
+| name  | role   | phrase    | spirit-animal | hp  |
+| ----- | ------ | --------- |:-------------:| --- |
+| John  | Wizard | "Yeah"    |      Cat      | 200 |
+| Sally | Knight | "Woot"    |    Dragon     | 700 |
+| Carl  | Rogue  | "Tsk Tsk" |  Caterpillar  | 150 |
+| Maria | Healer | "Meh"     |     Tiger     | 400 |
+
 ```
 ⬇️
-| Tables        |      Are      |  Cool |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      |   centered    |   $12 |
-| zebra stripes |   are neat    |    $1 |
-| cat           |    killers    |    $9 |
+| name  | role   | phrase    | spirit-animal | hp  |
+| ----- | ------ | --------- |:-------------:| --- |
+| John  | Wizard | "Yeah"    |      Cat      | 200 |
+| Sally | Knight | "Woot"    |    Dragon     | 700 |
+| Carl  | Rogue  | "Tsk Tsk" |  Caterpillar  | 150 |
+| Maria | Healer | "Meh"     |     Tiger     | 400 |
 
 ## Emoji
 
@@ -124,10 +171,13 @@ export default {
 ## File path
 
 ``` md
-<<< @/filepath <!-- this file -->
+<<< @/help/markdown/README.md <!-- this file -->
 ```
 ⬇️
-<<< @/README.md
+
+
+<<< @/help/markdown/README.md
+
 
 # Markdown Config
 

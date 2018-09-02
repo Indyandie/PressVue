@@ -95,4 +95,4 @@ layout: SpecialLayout
 ---
 ```
 
-[Go Back 🏡](/custompg.html)
+[🖌 Custom Page](/custompg.html)

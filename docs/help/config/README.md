@@ -1,12 +1,12 @@
 # Config Settings
-Add site wide settings from `.vuepress/config.js`
+Add site wide settings from `.vuepress/config.js` or just hear from the 🐴👅 [VuePres - config reference](https://vuepress.vuejs.org/config/#basic-config).
 ``` js
 module.exports = {
   // Settings
 }
 ```
 
-## Site Info
+## Basic Site Info
 ``` js
 title: "Kooll Pname", // Site Header
 description: "Etc. etc. etc.",
@@ -20,7 +20,7 @@ head: [
 ],
 ```
 
-## Search Bar
+## Search
 ``` js
 search: false,
 searchMaxSuggestions: 10
@@ -36,8 +36,8 @@ themeConfig: {
 
 ## Navigation
 
-``` md
-<!-- This Site -->
+``` bash
+# This Site
 cwd
 └─ docs
 │   │─ README.md
@@ -114,7 +114,6 @@ displayAllHeaders: true // Default: false
 
 #### Groups
 
-/
 ```js
 [
   {
@@ -208,11 +207,6 @@ algolia: {
 ## Service Worker
 ``` js
 serviceWorker: true
-```
-
-## Theme
-``` js
-theme: 'vue'
 ```
 
 ## Translations

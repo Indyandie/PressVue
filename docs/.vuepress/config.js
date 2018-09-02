@@ -18,28 +18,20 @@ module.exports = {
 
     // Simple
       {
-        text: 'Nav',
-        link: '/test.md'
+        text: 'Get Started',
+        link: '/start'
       },
 
     // Dropdown
-      {text: 'Dropdown',
-          items: [
-            { text: 'Label',
-              items: [
-                { text: 'One', link: '/test.md' },
-                { text: 'Two', link: '/test.md' }
-              ]
-          }
-        ]
-      },
       {text: 'Help',
-        items: [
-          { text: '',
-            items: [
-              { text: 'Markdown', link: '/help/markdown/' },
-              { text: 'Vue', link: '/help/vue/' }
-            ]
+          items: [
+            { text: '',
+              items: [
+                { text: 'Config', link: '/help/config/' },
+                { text: 'Markdown', link: '/help/markdown/' },
+                { text: 'Vue', link: '/help/vue/' },
+                { text: 'YAML', link: '/help/frontmatter/' },
+              ]
           }
         ]
       },
@@ -47,7 +39,7 @@ module.exports = {
     // External Link
       {
         text: 'Github',
-        link: 'https://github.com/'
+        link: 'https://github.com/Indyandie/Pressvue'
       }
   ],
 
@@ -58,6 +50,7 @@ module.exports = {
       '/help/config/',
       '/help/markdown/',
       '/help/vue/',
+      '/help/frontmatter/',
       ['/test', 'Custom sidebar title'],
       ['/custompg', 'Page Specific Layout'],
 
