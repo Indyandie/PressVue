@@ -2,6 +2,7 @@
 
 module.exports = {
 
+  base: "/pressvue/", 
   title: "PressVue",
   description: "A simple vuepress template.",
 
