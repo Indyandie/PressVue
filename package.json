@@ -1,0 +1,27 @@
+{
+  "name": "pressvue",
+  "version": "0.1.0",
+  "description": "vuepress template",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "vuepress": "^0.14.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "docs:build": "vuepress build docs",
+    "test": "vuepress dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Indyandie/PressVue.git"
+  },
+  "author": "indyandie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Indyandie/PressVue/issues"
+  },
+  "homepage": "https://github.com/Indyandie/PressVue#readme"
+}
