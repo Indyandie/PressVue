@@ -35,7 +35,17 @@ cwo
 
 Use [markdown](/help/markdown/) for your main content and [vuejs](/help/vue/) if you want to get fancy.
 
-<<< @/start.md
+``` md
+# Page Title
+Some type of description. Add some _emojies_ 🥦🥕🍠.
+
+A **picture**.
+![alt text]( /PressVue/hero.png "Hero Image")
+
+## Vue Components
+<Beep/>
+```
+
 
 
 ## Let's setup your header
