@@ -26,28 +26,23 @@ module.exports = {
           items: [
             { text: '',
               items: [
-                { text: 'پیکربندی', link: '/help/config/' },
-                { text: 'مارک دان', link: '/help/markdown/' },
-                { text: 'ویو', link: '/help/vue/' }
+                { text: 'پیکربندی', link: '/config' },
+                { text: 'مارک دان', link: '/markdown' },
+                { text: 'ویو', link: '/vue' }
               ]
           }
         ]
-      },
-
-    // External Link
-      {
-        text: 'Github',
-        link: 'https://github.com/Indyandie/Pressvue'
-      }
+      } 
+    
   ],
 
   // SIDEBAR
     sidebar: [
 
       '/start',
-      '/help/config/',
-      '/help/markdown/',
-      '/help/vue/' 
+      '/config',
+      '/markdown',
+      '/vue' 
 
     ],
 

@@ -1,4 +1,5 @@
-# Config Settings
+# پیکربندی تنظیمات
+
 ::: tip
 This is a tip
 :::

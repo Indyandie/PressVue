@@ -224,6 +224,7 @@ function find (page, items, offset) {
 
 .page-nav
   @extend $wrapper
+  direction:ltr;
   padding-top 1rem
   padding-bottom 0
   .inner

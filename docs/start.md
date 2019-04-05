@@ -1,12 +1,12 @@
 ---
-title: Getting Started
+title: شروع
 ---
 
-# NPC Village 🍄🏠👴🏾
+# دهکده سفید برفی 🍄🏠👴🏾
 
-## برنامه سلام دنیا
+## ساخت برخی از صفحه هات
 
-### Add your files and directories
+### نحوه جایگذاری ها فایل و شاخه ها
 
 ``` bash
 
@@ -48,7 +48,7 @@ A **picture**.
 
 
 
-## Let's setup your header
+## شروع استاپ سیستم
 In `docs/.vuepress/config.js`.
 
 ### Header Title

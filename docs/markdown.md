@@ -1,4 +1,4 @@
-# Using Markdown
+# آموزش Markdown
 
 This is a super trimmed down ✂️copy/🍝pasta version of [vuepress - markdown extensions](https://vuepress.vuejs.org/guide/markdown.html#header-anchors).
 
@@ -171,12 +171,12 @@ export default {
 ## File path
 
 ``` md
-<<< @/help/markdown/README.md <!-- this file -->
+<<< @/docs/.vuepress/config.js <!-- this file -->
 ```
 ⬇️
 
 
-<<< @/help/markdown/README.md
+<<< @/docs/.vuepress/config.js
 
 
 # Markdown Config
