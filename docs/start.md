@@ -4,7 +4,7 @@ title: Getting Started
 
 # NPC Village 🍄🏠👴🏾
 
-## Create Some Pages
+## برنامه سلام دنیا
 
 ### Add your files and directories
 

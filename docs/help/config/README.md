@@ -1,4 +1,10 @@
 # Config Settings
+::: tip
+This is a tip
+:::
+<ul v-for="i in 3">
+  <li>{{ i }} </li>
+</ul>
 Add site wide settings from `.vuepress/config.js` or just hear from the 🐴👅 [VuePres - config reference](https://vuepress.vuejs.org/config/#basic-config).
 ``` js
 module.exports = {

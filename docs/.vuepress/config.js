@@ -1,8 +1,7 @@
 // .vuepress/config.js
 
 module.exports = {
-
-  base: "/PressVue/", 
+base:'/One-Docs/',
   title: "PressVue",
   description: "A simple vuepress template.",
 
@@ -19,7 +18,7 @@ module.exports = {
 
     // Simple
       {
-        text: 'Get Started',
+        text: 'شروع',
         link: '/start'
       },
 
