@@ -124,14 +124,14 @@ sidebar: [
 
 You can edit these from `override.styl`.
 
-<<< @/.vuepress/override.styl {2,3,4,5}
+<<< @/docs/.vuepress/override.styl {2,3,4,5}
 
 
 ## Add Your Own Styles
 
-You can edit these from `override.styl`.
+You can edit these from `style.styl`.
 
-<<< @/.vuepress/style.styl
+<<< @/docs/.vuepress/style.styl
 
 ## Assets
 Make sure to add your local assets under `/.vuepress/public`
