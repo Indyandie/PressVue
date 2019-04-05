@@ -1,7 +1,6 @@
 // .vuepress/config.js
-
 module.exports = {
-base:'/One-Docs/',
+ base: process.env.NODE_ENV === 'development' ? '/docs/' : '/',  
   title: "PressVue",
   description: "A simple vuepress template.",
 
