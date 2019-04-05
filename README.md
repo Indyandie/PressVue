@@ -1,5 +1,6 @@
-# PressVue
+# PressVue with Vazir Font 
 A vuepress template/cheatsheet for my yearning for learning.
+فونت وزیر و راست چین بودن نیز اضافه شده است
 
 ## Status
 Working on it :hammer:
