@@ -1,8 +1,8 @@
 // .vuepress/config.js
 module.exports = {
- base: process.env.NODE_ENV === 'development' ? '/docs/' : '/',  
-  title: "PressVue",
-  description: "A simple vuepress template.",
+ base:   '/',  
+  title: "مستندات سیستم",
+  description: "یک مثال مناسب از  VuePress برای فارسی زبانان",
 
   // HTML <head>
   head: [
@@ -20,16 +20,15 @@ module.exports = {
         text: 'شروع',
         link: '/start'
       },
-
+ 
     // Dropdown
-      {text: 'Help',
+      {text: 'راهنما',
           items: [
             { text: '',
               items: [
-                { text: 'Config', link: '/help/config/' },
-                { text: 'Markdown', link: '/help/markdown/' },
-                { text: 'Vue', link: '/help/vue/' },
-                { text: 'YAML', link: '/help/frontmatter/' },
+                { text: 'پیکربندی', link: '/help/config/' },
+                { text: 'مارک دان', link: '/help/markdown/' },
+                { text: 'ویو', link: '/help/vue/' }
               ]
           }
         ]
@@ -48,10 +47,7 @@ module.exports = {
       '/start',
       '/help/config/',
       '/help/markdown/',
-      '/help/vue/',
-      '/help/frontmatter/',
-      ['/test', 'Custom sidebar title'],
-      ['/custompg', 'Page Specific Layout'],
+      '/help/vue/' 
 
     ],
 

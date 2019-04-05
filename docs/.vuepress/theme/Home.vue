@@ -97,7 +97,7 @@ export default {
       font-size 1.2rem
       color #fff
       background-color $accentColor
-      padding 0.8rem 1.6rem
+      padding 0.8rem 5.6rem
       border-radius 4px
       transition background-color .1s ease
       box-sizing border-box
@@ -155,7 +155,7 @@ export default {
         font-size 1.2rem
       .action-button
         font-size 1rem
-        padding 0.6rem 1.2rem
+        padding 0.6rem 5.2rem
     .feature
       h2
         font-size 1.25rem

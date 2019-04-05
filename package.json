@@ -5,12 +5,15 @@
   "directories": {
     "doc": "docs"
   },
-  "dependencies": {
+  "devDependencies": {
     "vuepress": "^0.14.2"
   },
-  "devDependencies": {},
+  "dependencies": {
+  },
   "scripts": {
-    "docs:build": "vuepress build docs"
+    "docs:build": "vuepress build docs",
+	"docs": "vuepress dev docs",
+	"start": "vuepress dev docs"
   },
   "repository": {
     "type": "git",

@@ -4,12 +4,12 @@ heroImage: /hero.png
 actionText: شروع 
 actionLink: /start
 features:
-- title: 🍜 Less Setup
-  details: Basic configuration to get started right away.
-- title: 🍼 Cheat Sheet
-  details: If you're a noob like me. You should still read the official documentation.
-- title: 🍼 Nothing Special
-  details: This was just a good way for me to familiarize myself with Vuepress.
+- title: 🍜 راه اندازی در حداقل زمان
+  details: کلی تنظیمات برای شما از قبل آماده است
+- title: 🍼 کدهای تقلب
+  details: آموزش استفاده از مارک دان و ویو در سیستم وجود دارد
+- title: 🏠 امکانات خاصی لازم نیست
+  details: همان رویه مستندنویسی در کد رعایت کنید نیاز شما برآورده میکند فایل های این سیستم بعدا از قابل راه اندازی است
 ---
 
 ``` bash
