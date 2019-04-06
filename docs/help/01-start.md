@@ -33,7 +33,7 @@ cwo
 
 ### Add your content
 
-Use [markdown](/help/markdown/) for your main content and [vuejs](/help/vue/) if you want to get fancy.
+Use [markdown](/markdown) for your main content and [vuejs](/vue) if you want to get fancy.
 
 ``` md
 # Page Title
@@ -75,8 +75,8 @@ Inside the `themeConfig` object
         { text: 'Help',
           items: [
             { text: 'Config', link: '/help/config/README.md' },     // cwd/docs/help/config/README.md
-            { text: 'Markdown', link: '/help/markdown/README.md' }, // cwd/docs/help/markdown/README.md
-            { text: 'Vue', link: '/help/vue/README.md' }            // cwd/docs/help/vue/README.md
+            { text: 'Markdown', link: '/markdownREADME.md' }, // cwd/docs/markdownREADME.md
+            { text: 'Vue', link: '/vueREADME.md' }            // cwd/docs/vueREADME.md
           ]
         }
       ]
@@ -109,15 +109,15 @@ sidebar: [
 
   '/start',
   '/help/config/',
-  '/help/markdown/',
-  '/help/vue/',
+  '/markdown',
+  '/vue',
   '/help/frontmatter/',
   ['/test', 'Custom sidebar title'],
   ['/custompg', 'Page Specific Layout'],
 
 ]
 ```
-[More options](/help/config/#sidebar)
+[More options](/config#sidebar)
 
 
 ## Default Styles

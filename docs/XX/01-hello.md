@@ -1,8 +1,8 @@
 ---
-home: true
+title: سلام2
 heroImage: /hero.png
 actionText: شروع 
-actionLink: /help/01-start
+actionLink: /start
 features:
 - title: 🍜 راه اندازی در حداقل زمان
   details: کلی تنظیمات برای شما از قبل آماده است

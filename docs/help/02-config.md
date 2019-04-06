@@ -84,8 +84,8 @@ nav: [
     items: [
       { text: '',
         items: [
-          { text: 'Markdown', link: '/help/markdown/' },
-          { text: 'Vue', link: '/help/vue/' }
+          { text: 'Markdown', link: '/markdown' },
+          { text: 'Vue', link: '/vue' }
         ]
       }
     ]
@@ -114,8 +114,8 @@ displayAllHeaders: true // Default: false
   '/',
   ['/test', 'custom text'],
   ['/custompg', 'Dark Mode'],
-  '/help/vue/',
-  '/help/markdown/'
+  '/vue',
+  '/markdown'
 ],
 ```
 
@@ -134,8 +134,8 @@ displayAllHeaders: true // Default: false
   {
     title: 'Help',
     children: [
-        '/help/vue/',
-        '/help/markdown/'
+        '/vue',
+        '/markdown'
      ]
   },
   {
@@ -143,8 +143,8 @@ displayAllHeaders: true // Default: false
     children: [
         '/',
         '/test',
-        '/help/vue/',
-        '/help/markdown/'
+        '/vue',
+        '/markdown'
      ]
   }
 ]
@@ -161,8 +161,8 @@ displayAllHeaders: true // Default: false
       title: 'Help',
       collapsable: true,
       children: [
-        '/help/vue/',
-        '/help/markdown/'
+        '/vue',
+        '/markdown'
         ]
     }
   ],
@@ -193,8 +193,8 @@ function genSidebarConfig (title) {
       children: [
         '',
         '/test',
-        '/help/vue/',
-        '/help/markdown/'
+        '/vue',
+        '/markdown'
       ]
     }
   ]
