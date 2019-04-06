@@ -11,7 +11,7 @@ function getSections() {
   const root = path.join(process.cwd(), 'docs');
   return (fs.readdirSync(root))
     .map(dir => ({ metaFn: path.join(root, dir, '_nav.json'), dir, fullDir: path.join(root, dir) }))
-    .filter(({ metaFn }) => fs.existsSync(metaFn));
+    .filter(({ metaFn }) => fs.existsSync(metaFn)).sort();
 
 }
 const sections = getSections();
