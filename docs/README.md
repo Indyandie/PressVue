@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /hero.png
+heroImage: /hero.jpg
 actionText: شروع 
 actionLink: /help/01-start
 features:

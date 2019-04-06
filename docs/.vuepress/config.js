@@ -1,16 +1,14 @@
 const fs = require('fs'), path = require('path');
-const baseConfig = {
-  base: '/',
-  title: "مستندات سیستم",
-  description: "یک مثال مناسب از  VuePress برای فارسی زبانان",
-};
+const baseConfigFn=path.join(process.cwd(),'docs','base-config');
+ 
+const baseConfig = require(baseConfigFn);
 function getMarkdownFiles(dir) {
   const files = fs.readdirSync(dir);
   return files.filter(fn => /^\d/.test(fn)).filter(fn => fn.toLowerCase().endsWith('.md')).map(s =>  s.substr(0, s.length - 3)).sort();
 }
 
 function getSections() {
-  const root = path.join(__dirname, '..');
+  const root = path.join(process.cwd(), 'docs');
   return (fs.readdirSync(root))
     .map(dir => ({ metaFn: path.join(root, dir, '_nav.json'), dir, fullDir: path.join(root, dir) }))
     .filter(({ metaFn }) => fs.existsSync(metaFn));
