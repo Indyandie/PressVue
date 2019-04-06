@@ -48,7 +48,7 @@ A **picture**.
 
 
 
-## شروع استاپ سیستم
+## راه اندازی سیستم
 In `docs/.vuepress/config.js`.
 
 ### Header Title

@@ -27,8 +27,6 @@ const sidebar = Object.assign({},
       getMarkdownFiles(sec.fullDir)
   }))
 );
-console.log(sidebar);
- 
 // .vuepress/config.js
 module.exports = {
   ...baseConfig,
@@ -37,9 +35,5 @@ module.exports = {
     ['link', { rel: 'icon', href: `/logo.png` }],
     ['link', { rel: 'stylesheet', href: `/vazir-font/font-face.css` }] // .vuepress/public/logo.png
   ],
-
-
-  themeConfig: { nav, sidebar },
-
-
+  themeConfig: { nav, sidebar } 
 } // END << module.exports
