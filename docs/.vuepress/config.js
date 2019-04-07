@@ -16,7 +16,8 @@ function getSections() {
 }
 const sections = getSections();
 const nav = sections.map(section => ({
-  link: ['',section.dir, getMarkdownFiles(section.fullDir)[0]].join('/'),
+  link:'/'+section.dir+'/',
+  link0: ['',section.dir, getMarkdownFiles(section.fullDir)[0]+'.html'].join('/'),
   ...require(section.metaFn),
 }));
 const sidebar = Object.assign({},
