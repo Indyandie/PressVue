@@ -1,6 +1,6 @@
 // Add you extra styles here
  
-body,input{
+body,input,li,ol{
 	direction:rtl;
 	font-family: Vazir;
 }
@@ -57,11 +57,10 @@ p {
   background-color: #F7FFFD !important;
 }
 .page-nav{
-	.prev,.next{
-		direction:ltr;
-	}
-	span.prev{
-		float:left;
+	direction:ltr;
+	a{
+		direction: rtl;
+    	display: inline-block;
 	}
 }
 
