@@ -6,14 +6,16 @@
     "doc": "docs"
   },
   "devDependencies": {
-    "vuepress": "^0.14.2"
+    "markdown-it-admonition": "^1.0.4",
+    "markdown-it-task-lists": "^2.1.1",
+    "vuepress": "^0.14.10",
+    "vuepress-theme-cool": "^0.1.9"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "scripts": {
     "docs:build": "vuepress build docs",
-	"docs": "vuepress dev docs",
-	"start": "vuepress dev docs"
+    "docs": "vuepress dev docs",
+    "start": "vuepress dev docs"
   },
   "repository": {
     "type": "git",

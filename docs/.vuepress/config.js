@@ -32,7 +32,24 @@ module.exports = {
   // HTML <head>
   head: [
     ['link', { rel: 'icon', href: `/logo.png` }],
-    ['link', { rel: 'stylesheet', href: `/vazir-font/font-face.css` }] // .vuepress/public/logo.png
+    ['link', { rel: 'stylesheet', href: `/vazir-font/font-face.css` }] ,// .vuepress/public/logo.png
+    ['link', { rel: 'stylesheet', href: `/material-iconfont/material-icons.css` }] // .vuepress/public/logo.png
+    
   ],
+   markdown: {
+    // options for markdown-it-anchor
+    anchor: { permalink: true },
+    // options for markdown-it-toc
+    toc: { includeLevel: [1, 2,3, 4] },
+    config: md => {
+      // use more markdown-it plugins!
+      md.set({html: true})
+      md.use(require("markdown-it-katex"));
+      md.use(require('markdown-it-task-lists'));
+      md.use(require("markdown-it-plantuml"));
+      md.use(require("markdown-it-admonition"));
+    }
+  },
+  theme:'cool',
   themeConfig: { nav, sidebar } 
 } // END << module.exports
