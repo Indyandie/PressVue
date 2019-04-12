@@ -7,7 +7,7 @@
       <div class="comparison__container">
         <div class="comparison__heading">
           <i class="material-icons blue-text">check</i>
-          مزایا
+            {{ goodTitle }}
         </div>
         <ul>
           <li
@@ -21,7 +21,7 @@
       <div class="comparison__container comparison__container--donts">
         <div class="comparison__heading comparison__heading--donts">
           <i class="material-icons">close</i>
-          معایب
+          {{ badTitle }}
         </div>
         <ul>
           <li
@@ -42,6 +42,12 @@ export default {
     intro: {
       type: String,
       required: true,
+    },
+    goodTitle:{
+      type:String
+    },
+    badTitle:{
+      type:String
     },
     good: {
       type: Array,

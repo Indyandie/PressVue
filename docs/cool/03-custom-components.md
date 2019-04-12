@@ -106,11 +106,13 @@ Nice timeline :rocket:
 ```
 <pros-cons
   intro="There are a couple of things we need to cover:"
+  goodTitle="مناسب است برای افرادی که ..."
   :good="[
     'Documentation Theme Based on Vue.',
     'Use of markdown-it plugins.',
     'Static Site Generator.'
   ]"
+  badTitle="نامناسب است برای افرادی که ..."
   :bad="[
     'Vuepress is not very stable yet',
     'Can be complex to configure',
