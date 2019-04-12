@@ -289,6 +289,21 @@ for name, val in admonition_types
     width: 1.5rem;
     text-align: center;
 }
-
+@media screen and (max-width: 959px) {
+  .search-box  {
+    display: none;
+  }
+  .theme-container:not(.sidebar-open) .sidebar{
+      display: none;
+  }
+  .theme-container .page{
+   padding-right: 0;
+  }
+  
+.sidebar{
+    width:25rem;
+padding-right: 1rem;
+    }
+}
 
  
