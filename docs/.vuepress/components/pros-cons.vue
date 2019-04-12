@@ -7,7 +7,7 @@
       <div class="comparison__container">
         <div class="comparison__heading">
           <i class="material-icons blue-text">check</i>
-          Pros
+          مزایا
         </div>
         <ul>
           <li
@@ -21,7 +21,7 @@
       <div class="comparison__container comparison__container--donts">
         <div class="comparison__heading comparison__heading--donts">
           <i class="material-icons">close</i>
-          Cons
+          معایب
         </div>
         <ul>
           <li
