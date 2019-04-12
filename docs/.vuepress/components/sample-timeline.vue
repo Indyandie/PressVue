@@ -20,7 +20,22 @@
     <timeline-item bg-color="#0909FA">Fourth Year 4A</timeline-item>
   </timeline>
 </template>
- 
+ <style>
+ .timeline:after{
+   left:auto;
+   right:0;
+ }
+ .timeline-circle{
+   left:auto;
+   right:-28px;
+ }
+ .timeline-item{
+   margin:28px 1.5rem 0 0
+ }
+ .timeline-title{
+   margin:-.15em 20px 15px 0
+ }
+ </style>
 <script>
 import { Timeline, TimelineItem, TimelineTitle } from 'vue-cute-timeline'
  
