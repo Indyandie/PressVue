@@ -24,6 +24,11 @@ a.sidebar-link.active{
 	border-right: none !important;
 	border-left:none !important;
 	font-weight:bold;
+  color:var(--accentColor);
+}
+ .nav-item > a:not(.external).router-link-active {
+ 
+  border-bottom-color:var(--accentColor);
 }
 .sidebar-sub-header{
 .sidebar-link.active{
@@ -63,22 +68,26 @@ a.sidebar-link.active{
 ul.sidebar-links>li>a{ 
 	border-right:none !important;
 }
-ul.sidebar-links>li>.sidebar-link.active{
+ul.sidebar-links>li>.sidebar-link{
 	position:relative;
 }
-ul.sidebar-links>li>.sidebar-link.active:after {
-    content: 'check_box';
+ul.sidebar-links>li>.sidebar-link:after {
+ content: 'expand_more';
+  transform:rotate(90deg);
     position: absolute;
     right: 15px;
     top: 0px;
     font-size: 20px;
     font-family: "Material Icons";
     overflow: visible;
-  -webkit-animation-name: tada;
-  animation-name: tada;
-  animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
+     transition:all 0.7s;
+  
+}
+ul.sidebar-links>li>.sidebar-link.active:after {
+     transform:rotate(0deg);
+ 
+ 
+ 
 }
 .sidebar{
 	left:auto;
@@ -282,68 +291,4 @@ for name, val in admonition_types
 }
 
 
-@-webkit-keyframes tada {
-  0% {
-    -webkit-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1);
-  }
-
-  10%, 20% {
-    -webkit-transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
-    transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
-  }
-
-  30%, 50%, 70%, 90% {
-    -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
-    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
-  }
-
-  40%, 60%, 80% {
-    -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
-    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
-  }
-
-  100% {
-    -webkit-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1);
-  }
-}
-
-@keyframes tada {
-  0% {
-    -webkit-transform: scale3d(1, 1, 1);
-    -ms-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1);
-  }
-
-  10%, 20% {
-    -webkit-transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
-    -ms-transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
-    transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
-  }
-
-  30%, 50%, 70%, 90% {
-    -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 1deg);
-    -ms-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 1deg);
-    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 1deg);
-  }
-
-  40%, 60%, 80% {
-  
-    color:#0984e3;
-  }
-
-  100% {
-    -webkit-transform: scale3d(1, 1, 1);
-    -ms-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1);
-  }
-}
-
-.tada {
-  -webkit-animation-name: tada;
-  animation-name: tada;
-  animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
+ 
