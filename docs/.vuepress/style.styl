@@ -1,28 +1,113 @@
+$accentColor = #0984e3
+$textColor = #2c3e50
+$borderColor = #eaecef
+$codeBgColor = #282c34
+:root{
+    --accentColor:#0984e3;
+}
 // Add you extra styles here
  
 body,input,li,ol{
 	direction:rtl;
 	font-family: Vazir;
+  
 }
 pre,.katex{
 	direction:ltr; 
 }
 a.sidebar-link{
-	padding:0.3rem 2rem;
+	padding:0.3rem 2.5rem;
 	margin:0.2rem 0;
 }
 a.sidebar-link.active{
 	border-right: 0.25rem solid transparent;
-	border-right-color: #179e84;
+	border-right: none !important;
 	border-left:none !important;
 	font-weight:bold;
+}
+.sidebar-sub-header{
+.sidebar-link.active{
+	  background:var(--accentColor);
+      	color:white;
+		position:relative;
+
+	border-left:20px solid #fff !important;
+	overflow:visible !important;
+	 background-clip: padding-box;
+}
+.sidebar-link.active:after {
+      content: '';
+    position: absolute;
+    right: 5px;
+    top:0px;
+    bottom:0
+    width: 3px;
+     border-right: 3px solid  #fff;
+ 
+		  
+}
+.sidebar-link.active:before {
+      content: '';
+    position: absolute;
+    left: -19px;
+    top:6px;
+    width: 0;
+    height: 0;
+    border-left: 14px solid transparent;
+    border-right:14px solid transparent;
+    border-top: 14px solid var(--accentColor);
+    clear: both; 
+		 transform: rotate(90deg);
+}
 }
 ul.sidebar-links>li>a{ 
 	border-right:none !important;
 }
+ul.sidebar-links>li>.sidebar-link.active{
+	position:relative;
+}
+ul.sidebar-links>li>.sidebar-link.active:after {
+    content: 'check_box';
+    position: absolute;
+    right: 15px;
+    top: 0px;
+    font-size: 20px;
+    font-family: "Material Icons";
+    overflow: visible;
+  -webkit-animation-name: tada;
+  animation-name: tada;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
 .sidebar{
 	left:auto;
 	right:0;
+ 
+}
+.sidebar::-webkit-scrollbar {
+    width: 0.4em;
+}
+ 
+.sidebar::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+ 
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+body::-webkit-scrollbar {
+    width: 0.4em;
+}
+ 
+body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+ 
+body::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
 }
 .page {
     padding-right: 20rem;
@@ -31,10 +116,11 @@ ul.sidebar-links>li>a{
 .sidebar .sidebar-sub-headers{
     padding-right: 1rem;
 	padding-left:0;
+    margin-bottom:1rem;
 }
+
 header.navbar{
- 
-	.home-link{
+   	.home-link{
 		position: absolute;
 		right: 4rem;
 	}
@@ -46,8 +132,44 @@ header.navbar{
 	.links{
 		left: 1.5rem;
 		right:auto;
+         visibility:hidden;
+
 	}
+     .links.ok{
+        visibility:visible !important;
+    }
+    .toggle{ 
+    font-family: "Material Icons"
+    font-size:32px;
+    border:none !important;
+    overflow:visible;
+    }
+    .toggle-nav{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    position: fixed;
+    right: 1.4rem;
+    top: 1rem;
+    max-width: 1rem;
+    padding: 0;
+    margin: 0;
+    }
+    
+    
 }
+ .sidebar-hide{
+     .sidebar{
+         display:none;
+     }
+     .page{
+         padding-right:0;
+     }   
+     .toggle-nav *{
+         color:var(--accentColor) !important;
+     }
+    }
 p {
   font-family: Vazir;
   font-size: 13px;
@@ -85,12 +207,11 @@ code{
  
 
 $admonition
-    box-shadow 0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12),0 3px 1px -2px rgba(0,0,0,.2)
+    box-shadow 0 2px 3px 0 rgba(0,0,0,.44)
     position relative
     margin 1.5625em 0
     padding 0 1.2rem
-    border-right .4rem solid #448aff
-    border-radius .2rem
+    border-right 5px none #448aff
     overflow auto
 
  
@@ -158,4 +279,71 @@ for name, val in admonition_types
     width: auto;
     width: 1.5rem;
     text-align: center;
+}
+
+
+@-webkit-keyframes tada {
+  0% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+  10%, 20% {
+    -webkit-transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+    transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+  }
+
+  30%, 50%, 70%, 90% {
+    -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+  }
+
+  40%, 60%, 80% {
+    -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+  }
+
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes tada {
+  0% {
+    -webkit-transform: scale3d(1, 1, 1);
+    -ms-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+  10%, 20% {
+    -webkit-transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+    -ms-transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+    transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+  }
+
+  30%, 50%, 70%, 90% {
+    -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 1deg);
+    -ms-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 1deg);
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 1deg);
+  }
+
+  40%, 60%, 80% {
+  
+    color:#0984e3;
+  }
+
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+    -ms-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.tada {
+  -webkit-animation-name: tada;
+  animation-name: tada;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
 }

@@ -15,11 +15,11 @@ function getSections() {
 
 }
 const sections = getSections();
-const nav = sections.map(section => ({
+const nav =[{link:'#toggle',text:'chrome_reader_mode',class:'asd'}].concat(  sections.map(section => ({
   link:'/'+section.dir+'/',
   link0: ['',section.dir, getMarkdownFiles(section.fullDir)[0]+'.html'].join('/'),
   ...require(section.metaFn),
-}));
+})));
 const sidebar = Object.assign({},
   ...sections.map(sec => ({
     [sec.dir == '.' ? '/' : `/${sec.dir}/`]:

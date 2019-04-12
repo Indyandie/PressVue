@@ -12,3 +12,32 @@ export default ({Vue, router, siteData }) => {
     ));
     router.addRoutes(routesForNav);
 }
+function processLinks(){
+    const links=document.querySelector('header.navbar .links');
+    if(!links) {
+        setTimeout(processLinks,200);
+        return;
+    }
+    const anchors=Array.from(  links.querySelectorAll('.nav-item a') ) ;
+    console.log(anchors);
+    for(const anchor of anchors){
+        const href=anchor.getAttribute('href');
+        if(href.includes('#toggle')){
+            anchor.classList.add('toggle');
+            anchor.parentElement.classList.add('toggle-nav');
+            anchor.setAttribute('href','#');
+            const anchorClone = anchor.cloneNode(true);
+
+            anchor.parentNode.replaceChild(anchorClone, anchor);
+anchorClone.addEventListener('click',toggleClick);
+        }
+    }
+    links.classList.add('ok')
+    
+} 
+function toggleClick(e){
+
+e.preventDefault();
+document.documentElement.classList.toggle('sidebar-hide');
+}
+processLinks();
