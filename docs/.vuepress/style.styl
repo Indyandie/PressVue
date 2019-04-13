@@ -35,6 +35,7 @@ a.sidebar-link.active{
 .sidebar-sub-header{
 .sidebar-link.active{
 	  background:var(--accentColor);
+      z-index 1000;
       border-right:    2px #999 solid;
       	color:white;
 		position:relative;
@@ -306,8 +307,24 @@ for name, val in admonition_types
   
 .sidebar{
     width:25rem;
-padding-right: 1rem;
-    }
+    padding-right: 1rem;
+    
+    
+}
+.sidebar:after{
+    display none;
+}
 }
 
+.sidebar:after{
+   content: ' ';
+    background: linear-gradient(to right, rgba(150,150,150,0.12) 0%, rgba(220,220,220,0) 100%);
+    position: fixed;
+    width: 50px;
+    top: 0;
+    bottom: 0;
+    right: 248px;
+    border-left: 1px solid #ccc;
+box-shadow: inset 1px 0px 1px rgba(0,0,0,0.5);
+    }
  
