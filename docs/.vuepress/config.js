@@ -1,6 +1,11 @@
 const fs = require('fs'), path = require('path');
-const baseConfigFn=path.join(process.cwd(),'docs','base-config');
- 
+function getDocDir(){
+   return [path.join(  process.cwd(),'docs'),process.cwd()].filter(fs.existsSync)[0]
+    
+}
+const docPath=getDocDir();
+const baseConfigFn=path.join(docPath,'base-config-doc');
+
 const baseConfig = require(baseConfigFn);
 function getMarkdownFiles(dir) {
   const files = fs.readdirSync(dir);
@@ -8,7 +13,7 @@ function getMarkdownFiles(dir) {
 }
 
 function getSections() {
-  const root = path.join(process.cwd(), 'docs');
+  const root = docPath;
   return (fs.readdirSync(root))
     .map(dir => ({ metaFn: path.join(root, dir, '_nav.json'), dir, fullDir: path.join(root, dir) }))
     .filter(({ metaFn }) => fs.existsSync(metaFn)).sort();
@@ -34,7 +39,7 @@ module.exports = {
     ['link', { rel: 'icon', href: `/logo.png` }],
     ['link', { rel: 'stylesheet', href: `/vazir-font/font-face.css` }] ,// .vuepress/public/logo.png
     ['link', { rel: 'stylesheet', href: `/material-iconfont/material-icons.css` }] // .vuepress/public/logo.png
-    
+
   ],
    markdown: {
     // options for markdown-it-anchor
@@ -51,5 +56,5 @@ module.exports = {
     }
   },
   theme:'cool',
-  themeConfig: { nav, sidebar } 
+  themeConfig: { nav, sidebar }
 } // END << module.exports
