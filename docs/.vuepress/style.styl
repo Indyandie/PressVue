@@ -39,7 +39,7 @@ a.sidebar-link.active{
 .sidebar-button{
     right:1rem;
     left:auto;
-    }
+}
 .sidebar-sub-header{
     max-height: 33px;
 .sidebar-link.active{
@@ -107,6 +107,7 @@ ul.sidebar-links>li>.sidebar-link.active:after {
 	left:auto;
 	right:0;
     overflow-x: hidden; 
+    display: none;
 }
 .sidebar::-webkit-scrollbar {
     width: 0.4em;
@@ -303,17 +304,31 @@ for name, val in admonition_types
     width: 1.5rem;
     text-align: center;
 }
+  html:not(.is-sidebar-open){
+          .page{
+     padding-right: 0;
+  }
+  
+        .sidebar{
+      display: none;
+  }
+  }
+  html.is-sidebar-open  .sidebar{
+      display: block;
+  }
+  
 @media screen and (max-width: 959px) {
   .search-box  {
     display: none;
   }
-  .theme-container:not(.sidebar-open) .sidebar{
-      display: none;
+  .comparison{
+      flex-direction: column;
+      }
+  .comparison__container{
+      width:100% !important ;
   }
-  .theme-container .page{
-   padding-right: 0;
-  }
-  
+
+
 .sidebar{
     width:20rem;
     padding-right: 1rem;
@@ -323,6 +338,15 @@ for name, val in admonition_types
 .sidebar:after{
     display none;
 }
+ 
+html.is-sidebar-open .sidebar {
+    transform: translateX(0);
+}
+ 
+html.is-sidebar-open .sidebar {
+    width: 20rem;
+    padding-right: 1rem;
+}
 }
  
 .sidebar:before{
@@ -330,10 +354,13 @@ for name, val in admonition_types
       position: fixed;
     width: 300px;
     top: 0;
-    bottom: 0;
+    bottom: 0; 
     z-index -1;
     right: 0px;
     border-left: 1px solid #ccc;
 box-shadow: inset 1px 0px 1px rgba(0,0,0,0.5);
     }
  
+ .sidebar-button{
+     display:block !important;
+     }

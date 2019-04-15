@@ -12,48 +12,25 @@ export default ({ Vue, router, siteData }) => {
     ));
     router.addRoutes(routesForNav);
 }
-function processLinks() {
-    const links = document.querySelector('header.navbar .links');
-    if (!links) {
-        setTimeout(processLinks, 200);
-        return;
+var simulateClick = function (elem) {
+
+    // Create our event (with options)
+    var evt = new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+        view: window
+    });
+    // If cancelled, don't dispatch our event
+    return !elem.dispatchEvent(evt);
+};
+function processSidebarButton() {
+    const sidebarButton = document.querySelector('.sidebar-button');
+    if (sidebarButton) {
+        sidebarButton.addEventListener('click', () => document.documentElement.classList.toggle('is-sidebar-open'));
+        document.body.clientWidth > 959 && simulateClick(sidebarButton);
     }
-
-    const anchors = Array.from(links.querySelectorAll('.nav-item a'));
-    processSidebar();
-    for (const anchor of anchors) {
-        const href = anchor.getAttribute('href');
-        if (href.includes('#toggle')) {
-            anchor.classList.add('toggle');
-            anchor.parentElement.classList.add('toggle-nav');
-            anchor.setAttribute('href', '#');
-            const anchorClone = anchor.cloneNode(true);
-
-            anchor.parentNode.replaceChild(anchorClone, anchor);
-            anchorClone.addEventListener('click', toggleClick);
-        }
-    }
-    links.classList.add('ok')
-
+    else
+        setTimeout(processSidebarButton, 200);
 }
 
-function processSidebar() {
-    const links = document.querySelector('.theme-container>.sidebar>.nav-links');
-    if (!links) return;
-    const anchors = Array.from(links.querySelectorAll('.nav-item a'));
-
-    for (const anchor of anchors) {
-        const href = anchor.getAttribute('href');
-        if (href.includes('#toggle')) {
-            anchor.parentElement.style.display = 'none';
-
-        }
-    }
-
-}
-function toggleClick(e) {
-
-    e.preventDefault();
-    document.documentElement.classList.toggle('sidebar-hide');
-}
-processLinks();
+processSidebarButton();
