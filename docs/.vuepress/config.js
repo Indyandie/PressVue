@@ -53,7 +53,6 @@ module.exports = {
       md.use(require('markdown-it-task-lists'), { label: true });
       md.use(require("markdown-it-plantuml"));
       md.use(require("markdown-it-admonition"));
-      md.use(require('markdown-it-highlight').default);
     }
   },
   theme: 'cool',
