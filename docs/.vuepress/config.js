@@ -50,9 +50,10 @@ module.exports = {
       // use more markdown-it plugins!
       md.set({ html: true })
       md.use(require("markdown-it-katex"));
-      md.use(require('markdown-it-task-lists'));
+      md.use(require('markdown-it-task-lists'), { label: true });
       md.use(require("markdown-it-plantuml"));
       md.use(require("markdown-it-admonition"));
+      md.use(require('markdown-it-highlight').default);
     }
   },
   theme: 'cool',
