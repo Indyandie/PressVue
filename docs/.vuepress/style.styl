@@ -99,7 +99,7 @@ ul.sidebar-links>li>.sidebar-link.active:after {
      transform:rotate(0deg);
   font-size: 29px;
       top: -5px;
-  right: 8px;
+  right: 7px;
   
  
 }
@@ -313,7 +313,33 @@ for name, val in admonition_types
   }
   }
   html.is-sidebar-open  .sidebar{
-      display: block;
+      display: flex;
+      flex-direction: column;
+      .sidebar-links{
+          flex:1;
+        display: flex;
+        flex-direction: column;
+          li:not(.active){
+              transition: all 1s;
+          }
+          li.active{
+              flex:1;
+              .sidebar-sub-headers{
+                    position:relative;
+              }
+              .sidebar-sub-headers:after{
+                content: ' ';
+                position: absolute;
+                right: 20px;
+                top:-5px;
+                bottom:-5px;
+                    z-index: -1;
+                width: 0px;
+                    border-right: 3px solid  whitesmoke; 
+         
+            }
+          }
+        }
   }
   
 @media screen and (max-width: 959px) {
@@ -362,7 +388,14 @@ box-shadow: inset 1px 0px 1px rgba(0,0,0,0.5);
  
  .sidebar-button{
      display:block !important;
-     }
+}
+.contains-task-list{
+    padding:0;
+    list-style: none;
+    li{
+        min-height: 30px;
+    }
+}
 .task-list-item-checkbox{
      visibility hidden;
 }
@@ -376,3 +409,12 @@ box-shadow: inset 1px 0px 1px rgba(0,0,0,0.5);
 .task-list-item-checkbox:checked:after{
     content: 'check_box';
 } 
+th{
+    background: #999;
+    color:white;
+}
+em{
+    color:#000;
+    font-weight: bold;
+    font-style: none;
+}

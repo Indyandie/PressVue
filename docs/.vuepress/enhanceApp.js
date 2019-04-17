@@ -32,5 +32,22 @@ function processSidebarButton() {
     else
         setTimeout(processSidebarButton, 200);
 }
-
+let current_page_url = '';
+function pageChanged() {
+      const sidebarLinks = Array.from(document.querySelectorAll('.sidebar-links li'));
+    for (const li of sidebarLinks) li.classList.remove('active');
+    setTimeout( function(){ 
+    const sidebarActive = document.querySelector('.sidebar-link.active');
+    sidebarActive && sidebarActive.parentElement.classList.add('active');
+    },300);
+}
+function _pageChanged() {
+     const contentElement = document.querySelector('.content');
+     
+    if (contentElement && current_page_url != location.pathname) {
+        current_page_url = location.pathname;
+        pageChanged();
+    }
+}
+setInterval(_pageChanged, 400);
 processSidebarButton();
