@@ -12,6 +12,7 @@ export default ({ Vue, router, siteData }) => {
     ));
     router.addRoutes(routesForNav);
 }
+let avoidStoreToggleMode = 0;
 var simulateClick = function (elem) {
 
     // Create our event (with options)
@@ -23,27 +24,34 @@ var simulateClick = function (elem) {
     // If cancelled, don't dispatch our event
     return !elem.dispatchEvent(evt);
 };
-function processSidebarButton() {
+let lastSidebarClicked = +new Date();
+function updateSidebar() {
     const sidebarButton = document.querySelector('.sidebar-button');
-    if (sidebarButton) {
+    if (sidebarButton && !sidebarButton.hasAttribute('data-click')) {
+        sidebarButton.setAttribute('data-click', 'toggleMode');
+
         sidebarButton.addEventListener('click', () => {
+            if (+new Date() - lastSidebarClicked < 200) return;
+            lastSidebarClicked = +new Date();
 
             if (!document.querySelector('.theme-container.no-sidebar')) {
                 const { documentElement } = document;
                 documentElement.classList.toggle('is-sidebar-open');
-                localStorage.setItem('sidebar', documentElement.classList.contains('is-sidebar-open') ? '' : 'hide');
+                if (!avoidStoreToggleMode) localStorage.setItem('sidebar', documentElement.classList.contains('is-sidebar-open') ? '' : 'hide');
             }
         });
-        const sidebarToggled = localStorage.getItem('sidebar') == 'hide' ? false : true;
-        document.body.clientWidth > 959 &&
-            (document.documentElement.classList.contains('is-sidebar-open') != sidebarToggled)
-            && simulateClick(sidebarButton);
-    }
 
+    }
+    const sidebarToggled = localStorage.getItem('sidebar') == 'hide' ? false : true;
+    avoidStoreToggleMode = 1;
+    document.body.clientWidth > 959 &&
+        (document.documentElement.classList.contains('is-sidebar-open') != sidebarToggled)
+        && simulateClick(sidebarButton);
+    setTimeout(() => avoidStoreToggleMode = 0, 100);
 }
 let current_page_url = '';
 function pageChanged() {
-    processSidebarButton();
+    updateSidebar();
     const sidebarLinks = Array.from(document.querySelectorAll('.sidebar-links li'));
     for (const li of sidebarLinks) li.classList.remove('active');
     setTimeout(function () {
