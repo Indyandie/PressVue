@@ -30,7 +30,8 @@ a.sidebar-link.active{
 	border-right: none !important;
 	border-left:none !important;
 	font-weight:bold;
-  color:var(--accentColor);
+    color:var(--accentColor);
+        margin-bottom: 12px !important;
 }
  .nav-item > a:not(.external).router-link-active {
  
@@ -73,7 +74,6 @@ ul.sidebar-links>li>.sidebar-link{
 }
 ul.sidebar-links>li>.sidebar-link:after {
  content: 'expand_more';
-  transform:rotate(90deg);
     position: absolute;
     right: 15px;
     top: 0px;
@@ -82,15 +82,17 @@ ul.sidebar-links>li>.sidebar-link:after {
     overflow: visible;
      transition:all 0.7s;
   
+  transform:rotate(90deg);
 }
-ul.sidebar-links>li>.sidebar-link.active:after {
+
+ul.sidebar-links>li.has-children>.active.sidebar-link:after {
+
      transform:rotate(0deg);
   font-size: 29px;
       top: -5px;
   right: 8px;
-  
- 
 }
+ 
 .sidebar{
 	left:auto;
 	right:0;
@@ -311,7 +313,6 @@ for name, val in admonition_types
               transition: all 1s;
           }
           li.active{
-              flex:1;
               .sidebar-sub-headers{
                     position:relative;
               }
@@ -328,6 +329,9 @@ for name, val in admonition_types
                     border-right: 3px solid  whitesmoke; 
          
             }
+          }
+          li.active.has-children{ 
+              flex:1;
           }
         }
   }
