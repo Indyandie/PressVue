@@ -12,6 +12,11 @@ body,input,li,ol{
 	font-family: Vazir;
   
 }
+.center-me{
+     display: flex;
+    align-items: center;
+    justify-content: center;
+}
 pre,.katex{
 	direction:ltr; 
 }
@@ -209,6 +214,16 @@ code{
 	direction:ltr;
 	display: inline-block;
 }
+ .line-numbers-mode{
+	direction:ltr;
+
+  
+ .line-numbers-wrapper {
+     
+    padding: 1.15rem 0 !important;
+    line-height: 1.15 !important;
+}
+ }
 .custom-block{
 	border-right-width: 0.6rem;
 	border-right-style: solid;
@@ -416,4 +431,101 @@ em{
     0% { opacity: 0; }
     30% { opacity: 0; }
     100%   { opacity: 1; }
+}
+div[class*="language-"] .highlight-lines{
+    line-height: 1.15;   
+    padding-top: 1.2rem;
+}
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.animated.infinite {
+  animation-iteration-count: infinite;
+}
+
+.animated.delay-1s {
+  animation-delay: 1s;
+}
+
+.animated.delay-2s {
+  animation-delay: 2s;
+}
+
+.animated.delay-3s {
+  animation-delay: 3s;
+}
+
+.animated.delay-4s {
+  animation-delay: 4s;
+}
+
+.animated.delay-5s {
+  animation-delay: 5s;
+}
+
+.animated.fast {
+  animation-duration: 800ms;
+}
+
+.animated.faster {
+  animation-duration: 500ms;
+}
+
+.animated.slow {
+  animation-duration: 2s;
+}
+
+.animated.slower {
+  animation-duration: 3s;
+}
+
+@media (print), (prefers-reduced-motion) {
+  .animated {
+    animation: unset !important;
+    transition: none !important;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  animation-name: fadeIn;
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.fadeOut {
+  animation-name: fadeOut;
+}
+.part sub:before{
+
+ 
+        content: 'format_list_numbered_rtl';
+    font-family: "Material Icons";
+    max-width: 1rem;
+    font-size: 14px;
+      display: inline-block;
+   direction: ltr;
+    }
+ .part sub{
+    font-style: italic;
+    direction: ltr;
+    display:inline-block;
+    margin:0 0.3rem;
 }

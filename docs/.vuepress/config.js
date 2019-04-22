@@ -42,6 +42,7 @@ module.exports = {
 
   ],
   markdown: {
+    lineNumbers:true,
     // options for markdown-it-anchor
     anchor: { permalink: true },
     // options for markdown-it-toc
