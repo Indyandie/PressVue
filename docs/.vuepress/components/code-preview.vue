@@ -1,5 +1,5 @@
 <template>
-  <div class="root">
+  <div class="code-preview-root">
     <header >
       <div>
       <button class="next" @click="handleNavigate" data-nav="1"><span>Next</span></button>
@@ -30,8 +30,11 @@
 </template>
 
 <script>
+import markkDownIt from "markdown-it";
+  const md1=markkDownIt(); 
 const delay=ms=>new Promise(resolve=>setTimeout(resolve,ms));
-async function highlight(el,lines){
+async function showHighlight(el,lines){
+  Array.from(el.querySelectorAll('.line-numbers-wrapper .line-number')).forEach((hl,idx)=>hl.className=`line-number ${lines.includes(idx+1) ? 'in-range' : ''}`);
   Array.from(el.querySelectorAll('.highlighted')).forEach(hl=>hl.classList.add('animated','faster','fadeOut'));
   await delay(700);
   const hlLines=el.querySelector('.highlight-lines');
@@ -40,7 +43,10 @@ async function highlight(el,lines){
   const length=hlLines.childElementCount;
 hlLines.innerHTML=
 Array.from({length}).map((_,idx)=>
-  lines.includes(idx+1) ? ' <div class="highlighted animated fadeIn">&nbsp;</div>'  : '<br/>').join('\n');
+  lines.includes(idx+1) ? 
+  `<div class="highlighted animated fadeIn
+   ${!lines.includes(idx) ? ' first' : ''}
+   ${!lines.includes(idx+2) ? ' last' : ''} ">&nbsp;</div>`  : '<br/>').join('\n');
  
 }
 function smoothEffect(el,scrollY){
@@ -100,11 +106,20 @@ const rangeFuncs={
     }
     return result;
   },
+   line(args,lines){
+     const [searchTerm]=args;
+   
+      for(let idx=0;idx<lines.length;idx++){
+         const line=lines[idx];
+        if(   contains(searchTerm,lines[idx])) return [idx+1];
+      }
+      return [];
+   },
   block(args,lines){
    const [searchTerm]=args;
     const result=[];
     let founded=false;
-    let lockCount=0;
+    let lockCount=0,plockCount=0;
     for(let idx=0;idx<lines.length;idx++){
       const line=lines[idx];
       if(!line.trim()){
@@ -116,9 +131,18 @@ const rangeFuncs={
       founded=founded || contains(searchTerm,line);
       if(founded){ 
           result.push(idx+1);
-          lockCount -=(line.split('}').length-1);
-          if(line.includes('}') && lockCount<=0) return result;
-          lockCount +=(line.split('{').length-1);
+           for(const ch of Array.from(line)){
+             if(ch=='(') plockCount++;
+             else if (ch==')')plockCount--;
+            else if(ch=='}') {
+              lockCount--;
+              if(  lockCount<=0 && plockCount<=0) return result;
+            }
+            else if(ch=='{') lockCount++;
+          }
+          
+        
+           
       }
        
 
@@ -136,18 +160,42 @@ const rangeFuncs={
         if(result.length) result.push(idx+1);
         continue;
       }
-     
-      
       founded=founded || contains(searchTerm,line);
       if(founded){ 
           result.push(idx+1);
-          lockCount -=line.split('(').length;
-          if(line.includes(')') && lockCount<=0) return result;
-          lockCount +=line.split(')').length;
+         for(const ch of Array.from(line)){
+            if(ch==')') {
+              lockCount--;
+             if(  lockCount<=0) return result;
+            }
+            else if(ch=='(') lockCount++;
+          }     
+      } 
+    }
+    return result;
+  },
+  arrayBlock(args,lines){
+   const [searchTerm]=args;
+    const result=[];
+    let founded=false;
+    let lockCount=0;
+    for(let idx=0;idx<lines.length;idx++){
+      const line=lines[idx];
+      if(!line.trim()){
+        if(result.length) result.push(idx+1);
+        continue;
       }
-       
-
-       
+      founded=founded || contains(searchTerm,line);
+      if(founded){ 
+          result.push(idx+1);
+         for(const ch of Array.from(line)){
+            if(ch==']') {
+              lockCount--;
+             if(  lockCount<=0) return result;
+            }
+            else if(ch=='[') lockCount++;
+          }     
+      } 
     }
     return result;
   }
@@ -170,24 +218,32 @@ function getRanges(array) {
 function computeLineRange(range,lines){
      
   const ranges=range.split('|');
-  return [].concat(...ranges.map(    r=> {
+  const result= [].concat(...ranges.map(    r=> {
       let groups; 
       groups = execRegExp(/^([0-9])+$/i,r);
       if(groups) return [+r]; 
       groups = execRegExp(/^([a-z0-9_-]+)\((.*)\)$/i,r);
       if(groups) {
-        console.log(groups);
-        const func=rangeFuncs[groups[1]];
+         const func=rangeFuncs[groups[1]];
         if(!func) throw `${groups[1]} not found in rangeFuncs `;
         return  func(groups[2].split(','), lines) ;
       }  
       groups =  r.includes(',') && r.split(',');
       if(groups) r.map(n=>+n);
       groups =  r.includes('..') && r.split('..');
-      if(groups) Array.from({length:+groups[1]-groups[0]+1}).map((_,idx)=>idx+groups[0]);
-       
- console.log({groups});
-  }))
+      if(groups) return  Array.from({length:+groups[1]-groups[0]+1}).map((_,idx)=>idx+groups[0]);
+      return  [];
+ 
+  }));
+  let lastEmptyCount=0;
+ 
+  for(let idx=result.length-1;idx>=0;idx--){
+     const lineIndex=result[idx]-1;
+     if(  lines[lineIndex].trim()) break;
+      lastEmptyCount++;
+  }
+   
+  return result.slice(0,result.length- lastEmptyCount );
 }
 export default {
   name: "code-preview",
@@ -199,24 +255,31 @@ export default {
       
     const parts = Array.from(this.$refs.content.querySelectorAll(".part"));
     let counter=0;
+    const clonedParts =[];
      for(const part of parts){ 
        const clonedPart=part.cloneNode(true);
+       clonedParts.push(clonedPart);
        clonedPart.setAttribute('data-index',counter++);
+       clonedPart.innerHTML=md1.render(part.innerHTML);
        const lines=computeLineRange(part.getAttribute('data-range'),this.lines) ;
       try{ 
         const span=document.createElement('sub');
          span.className='line-ranges';
         clonedPart.appendChild(span);
         span.innerText= getRanges(lines);
+    
       }catch(exc){
-
-      }
+        
+        }
 clonedPart.addEventListener('click',e=>{
-    this.handleNavigate(+e.currentTarget.getAttribute('data-index'));
+  this.handleNavigate(+e.currentTarget.getAttribute('data-index'));
 });
 
         this.$refs.parts.querySelector('.inner').appendChild(clonedPart ); 
      }
+      const maxHeight=Math.max(60,...clonedParts.map(p=>p.clientHeight));
+ this.$refs.parts.style.minHeight=(maxHeight*1.5)+'px';   
+
     this.handleNavigate(0);
     
   },
@@ -244,38 +307,80 @@ clonedPart.addEventListener('click',e=>{
  counter++;
       }
       const targetPart = partElements[ this.currentPart];
-         
+      //this.$refs.parts.style.minHeight=Math.max(targetPart.clientHeight*1.5,100)+'px';   
       const lines=computeLineRange(targetPart.getAttribute('data-range'),this.lines) ;
       // [this.currentPart,this.currentPart+1,this.currentPart+2];
-      console.log({lines});
-      if(!this.clientHeightForHighlighted){
+        if(!this.clientHeightForHighlighted){
         const highlighted=content.querySelector('.highlighted');
        if(!highlighted) throw `.highlighted not found`;
         this.clientHeightForHighlighted=highlighted.clientHeight;
       }
        const minLine= Math.min(...lines);
-        highlight(content,lines);
+        showHighlight(content,lines);
         smoothEffect(  content,this.clientHeightForHighlighted*minLine);
-    
-        const y=targetPart.offsetTop-this.$refs.parts.offsetTop-60;
-         
-      smoothEffect(this.$refs.parts,y);
-   
-        smoothEffect(targetPart);
-        this.$refs.counter.innerText=`${this.currentPart+1}/${partElements.length}`;
+          this.$refs.counter.innerText=`${this.currentPart+1}/${partElements.length}`;
          
     }
   }
 };
 </script>
+<style lang='stylus'>
+.code-preview-root{  
+  
+.line-number.in-range{
+    color:yellow;
+     }
+    .highlighted.first{
+  border-top:1px solid #fff;
+  }
+  .highlighted.last{
+  border-bottom:1px solid #fff;
+  }
+  .part{
+  position:relative;
+  }
+.part sub:before{
 
+ 
+        content: 'format_list_numbered_rtl';
+    font-family: "Material Icons";
+    max-width: 1rem;
+    font-size: 14px;
+      display: inline-block;
+   direction: ltr;
+    }
+ .part sub{
+    font-style: italic;
+    direction: ltr;
+    display:inline-block;
+    margin:0 0.3rem;
+    position: absolute;
+    bottom:0;
+    left:0;
+}
+.part>*{
+  display: inline-block;
+  margin:0;
+  width:100%;
+
+}
+.part.active{
+     background:#aaa;
+  }
+ .part.active sub{
+   display: none;
+    }
+    
+}
+
+</style>
 <style scoped lang='stylus'>
-.root {
+.code-preview-root {
   display: flex;
   flex-direction: column;
   flex:1;
   min-height:500px;
-   max-height:500px;
+    
 }
 .line-ranges{
     background:orange;
@@ -285,6 +390,7 @@ clonedPart.addEventListener('click',e=>{
 .__content {
   display:flex;
    flex:1;
+   max-height:300px;
     overflow-y:scroll;
 overflow-x:hidden;
     direction:ltr;
@@ -300,6 +406,7 @@ overflow-x:hidden;
   }
    
 }
+
 .part, part {
   display: none;
 }
@@ -307,36 +414,27 @@ overflow-x:hidden;
  section{
      border-bottom: 1px solid #555555;
     box-shadow: inset 0px -3px 2px rgba(0,0,0,0.3);
-  padding:0.5rem;
   background:whitesmoke;
-
+    transition:all 0.7s;
    .parts{
+  padding:0.5rem;
   max-height:6rem;
      overflow-y:scroll;
      overflow-x:hidden;
+         transition:all 0.7s;
      }
-     div::-webkit-scrollbar {
-    width: 0.4em;
-}
- 
-div::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-}
- 
-div::-webkit-scrollbar-thumb {
-  background-color: darkgrey;
-  outline: 1px solid slategrey;
-}
+   
   .part,part{
     cursor:pointer;
     display:block ; 
     opacity:0.4;
     position:relative
     padding-right:1.5rem;
+    overflow:visible;
   }
   .part:hover {
     color:#23a;
-    background:#aaa;
+ 
   }
   
   .part:before{
@@ -348,15 +446,32 @@ div::-webkit-scrollbar-thumb {
     opacity:1;
     
     }
+    .part:after{
+      position:absolute;
+      content:' ';
+    right:-0.5rem;
+    left:-0.5rem;
+    bottom:0px;
+    border-bottom:1px solid #777;
+  
+      }
 .part.passed:before{
     content:'check_box'
   }
    
   .part.active{
-    opacity:1;}
+    opacity:1;
+    margin:0 -0.5rem;
+    padding:0 0.5rem;
+        padding-right:2rem;
+
+    sub{
+      display:none;
+     }
+    }
   .part.active:before{
     content:'check';
-     
+     right:0.7rem;
     color:#3a2;
   }
   .part{

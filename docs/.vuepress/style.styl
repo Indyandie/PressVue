@@ -93,6 +93,7 @@ ul.sidebar-links>li>.sidebar-link:after {
 ul.sidebar-links>li.has-children>.active.sidebar-link:after {
 
      transform:rotate(0deg);
+     transition-delay: 0.4s;
   font-size: 29px;
       top: -5px;
   right: 8px;
@@ -137,6 +138,7 @@ body::-webkit-scrollbar-thumb {
     padding-right: 1rem;
 	padding-left:0;
     margin-bottom:1rem;
+    visibility:hidden;
 }
 
 header.navbar{
@@ -190,7 +192,6 @@ header.navbar{
     }
 p {
   font-family: Vazir;
-  font-size: 13px;
 }
 
 .search-box input {
@@ -325,8 +326,12 @@ for name, val in admonition_types
         display: flex;
         flex-direction: column;
           li:not(.active){
-              transition: all 1s;
+              transition: height 1s ease-in-out;
+                
           }
+          li ul{ 
+               
+              }
           li.active{
               .sidebar-sub-headers{
                     position:relative;
@@ -346,9 +351,20 @@ for name, val in admonition_types
             }
           }
           li.active.has-children{ 
-              flex:1;
+           
+             animation-name: showInDown;
+                  animation-duration: 1s;
+  animation-fill-mode: both;
+  ul{
+           animation-duration: 1s;
+  animation-fill-mode: both;
+ visibility:visible;
+  animation-name:fadeIn;
+  }
           }
+          
         }
+       
   }
   
 @media screen and (max-width: 959px) {
@@ -436,6 +452,7 @@ div[class*="language-"] .highlight-lines{
     line-height: 1.15;   
     padding-top: 1.2rem;
 }
+
 .animated {
   animation-duration: 1s;
   animation-fill-mode: both;
@@ -500,6 +517,24 @@ div[class*="language-"] .highlight-lines{
 .fadeIn {
   animation-name: fadeIn;
 }
+@keyframes showInDown {
+  0% {
+    max-height:  50px;
+    min-height: 40px;
+    overflow: hidden;
+     
+  }
+
+  99% {
+    max-height:  auto;
+    
+    
+  }
+
+100%{
+  flex:1;
+}
+}
 @keyframes fadeOut {
   from {
     opacity: 1;
@@ -513,19 +548,29 @@ div[class*="language-"] .highlight-lines{
 .fadeOut {
   animation-name: fadeOut;
 }
-.part sub:before{
-
+  div::-webkit-scrollbar {
+    width: 0.4em;
+}
  
-        content: 'format_list_numbered_rtl';
-    font-family: "Material Icons";
-    max-width: 1rem;
-    font-size: 14px;
-      display: inline-block;
-   direction: ltr;
-    }
- .part sub{
-    font-style: italic;
-    direction: ltr;
-    display:inline-block;
-    margin:0 0.3rem;
+div::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+ 
+div::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+a.header-anchor {
+    font-size: 0.85em;
+    float: right;
+    margin-right: -1.3em;
+    padding-left: 0.23em;
+    margin-top: 0.125em;
+    opacity: 1;
+    color: #E83524;
+    visibility: hidden;
+}
+h2 a.header-anchor {
+    visibility:visible;
+
 }
